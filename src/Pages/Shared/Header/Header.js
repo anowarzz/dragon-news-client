@@ -7,7 +7,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { FaUserAlt } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 import LeftSideNav from "../LeftSideNav/LeftSideNav";
 
@@ -42,17 +42,16 @@ const handleLogOut = () => {
 
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#features">All News</Nav.Link>
+            <Nav.Link >All News</Nav.Link>
 
-            <Nav.Link href="#pricing"></Nav.Link>
             <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">
                 Another action
               </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+              <NavDropdown.Item >Something</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
+              <NavDropdown.Item >
                 Separated link
               </NavDropdown.Item>
             </NavDropdown>
@@ -63,12 +62,20 @@ const handleLogOut = () => {
               {user?.uid ? (
                 <>
                   <span>{user?.displayName} </span>
+
+                  <button onClick={handleLogOut} className="btn btn-danger rounded ms-3">Log Out</button>
                   
                 </>
               ) : (
                 <>
-                  <Link to="/login"> </Link>
-                  <Link to="/register"> </Link>
+                  <Link className="pe-1" to="/login"> 
+                  <Button variant="primary">Login</Button>{' '}
+                  </Link>
+
+                  <Link to="/register"> 
+                  <Button variant="success">Register</Button>{' '}
+                  </Link>
+
                 </>
               )}
             </Nav.Link>
@@ -80,9 +87,9 @@ const handleLogOut = () => {
                  <Image
                   style={{ height: "50px" }}
                   roundedCircle
-                  src={user.photoURL} />
-
-                  <button onClick={handleLogOut} className="btn btn-warning rounded ms-3">Log Out</button>
+                  src={user?.photoURL} />
+                      
+               
 
                 </>
 ) : (
