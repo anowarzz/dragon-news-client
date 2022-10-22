@@ -6,7 +6,7 @@
 .pnp.js
 
 # colors
-.vscode
+/.vscode
 
 # testing
 /coverage
