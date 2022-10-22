@@ -5,14 +5,18 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import { Link } from 'react-router-dom';
 import LeftSideNav from '../LeftSideNav/LeftSideNav';
 
 
 const Header = () => {
     return (
         <Navbar collapseOnSelect className="mb-4 py-4" expand="lg" bg="light" variant="light">
-        <Container>
-          <Navbar.Brand className='fw-bold text-info' href="/">Dragon News</Navbar.Brand>
+        <Container> 
+          <Navbar.Brand className='fw-bold text-info'>
+            <Link className='text-decoration-none' to="/"> Dragon News
+            </Link>
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">

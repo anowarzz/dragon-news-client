@@ -3,7 +3,7 @@ import React from 'react';
 const News = () => {
     return (
         <div>
-            <p>This is the news section</p>
+            <h3>This is the news section</h3>
         </div>
     );
 };
