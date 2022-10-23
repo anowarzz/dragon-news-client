@@ -58,7 +58,7 @@ const handleLogOut = () => {
           </Nav>
 
           <Nav className="d-lg-flex align-items-center">
-            <Nav.Link>
+            <>
               {user?.uid ? (
                 <>
                   <span>{user?.displayName} </span>
@@ -78,9 +78,9 @@ const handleLogOut = () => {
 
                 </>
               )}
-            </Nav.Link>
+            </>
 
-            <Nav.Link eventKey={2}>
+            <Link className="ms-3"  to='/profile'>
               {user?.photoURL ? (
 
                 <>
@@ -88,14 +88,12 @@ const handleLogOut = () => {
                   style={{ height: "50px" }}
                   roundedCircle
                   src={user?.photoURL} />
-                      
-               
 
                 </>
 ) : (
                 <FaUserAlt />
               )}
-            </Nav.Link>
+            </Link>
           </Nav>
           <div className="d-lg-none">
             <LeftSideNav />

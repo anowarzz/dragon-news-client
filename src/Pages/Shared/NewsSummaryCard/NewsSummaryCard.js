@@ -35,12 +35,16 @@ const NewsSummaryCard = ({ news }) => {
 
         <Card.Text>
           {details.length > 200 ? (
-            <p>
+            <>
               {details.slice(0, 250) + "..."}
-              <Link to={`/news/${_id}`}>Read More</Link>{" "}
-            </p>
+              <Link to={`/news/${_id}`}>
+                <button className="btn-sm btn btn-success m-3">
+                Read More
+                </button>
+                </Link>{" "}
+            </>
           ) : (
-            <p>{details}</p>
+            details
           )}
         </Card.Text>
       </Card.Body>
