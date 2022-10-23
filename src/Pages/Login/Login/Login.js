@@ -1,7 +1,8 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 
@@ -9,9 +10,18 @@ import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
 
-    const navigate = useNavigate()
+ const [error, setError]  = useState('') 
+  
+  const {signIn} = useContext(AuthContext)
 
-const {signIn} = useContext(AuthContext)
+  const navigate = useNavigate()
+  const location = useLocation();
+
+
+ const from = location.state?.from?.pathname || '/'
+
+
+
 
 
 const handleSubmit = event => {
@@ -26,9 +36,19 @@ const handleSubmit = event => {
         const user = result.user
         console.log(user);
         form.reset();
-        navigate('/')
+        setError('')
+       if(user.emailVerified){
+        navigate(from , {replace : true})
+       }
+       else{
+        toast.error("Your email is not verified")
+       }
     })
-    .catch(e => console.error(e))
+    .catch(error => {
+      console.error(error)
+      setError(error.message)
+    
+    })
 
 }
 
@@ -46,13 +66,13 @@ const handleSubmit = event => {
         <Form.Control type="password" name="password" placeholder="Password" required/>
       </Form.Group>
      
-      <Button variant="primary" type="submit">
+      <Button  variant="primary" type="submit">
         Login
       </Button>
 
-      {/* <Form.Text className="text-danger">
-          We'll never share your email with anyone else.
-        </Form.Text> */}
+      <Form.Text className="text-danger d-block fw-bold fw-semibold fs-6">
+          {error}
+        </Form.Text>
     </Form>
         </div>
     );
