@@ -3,8 +3,11 @@ import { Button, Form } from 'react-bootstrap';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import useTitle from '../../../Hooks/useTitle';
 
 const Register = () => {
+
+useTitle('Register')
 
  const [error, setError] = useState(''); 
 
